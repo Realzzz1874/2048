@@ -1,6 +1,8 @@
 /**
  * Created by JYL on 2014/6/8.
  */
+ //$('#swipe').bind('swiperight swiperightup swiperightdown',eventHandler);
+ 
 $(document).keydown(function (event) {
     switch (event.keyCode) {
         case 37://left
