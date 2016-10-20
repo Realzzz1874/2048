@@ -1,6 +1,7 @@
 
 var board = [];
-
+var hasConflicted = [];
+var score = 0;
 $(function(){
     newgame();
 });
@@ -13,13 +14,15 @@ function newgame(){
     generateOneNumber();
 }
 
+function restartgame() {
+    $("#gameover").remove();
+    updateScore(0);
+    newgame();
+}
+
 function init(){
     for(var i=0;i<4;i++){
-        //定义了一个二维数组
-        board[i] = [];
         for(var j=0;j<4;j++){
-            //初始化小格子的值为0
-            board[i][j] = 0;
             var gridCell = $("#grid-cell-"+i+"-"+j);
             //通过getPosTop()方法设置每个格子距顶端的距离
             gridCell.css("top", getPosTop(i, j));
@@ -27,8 +30,17 @@ function init(){
             gridCell.css("left", getPosLeft(i, j));
         }
     }
+    for (i = 0; i < 4; i++) {
+        board[i] = [];
+        hasConflicted[i] = [];
+        for (var j = 0; j < 4; j++) {
+            board[i][j] = 0;
+            hasConflicted[i][j] = false;
+        }
+    }
 
     updateBoardView();
+    score = 0;
 }
 
 function updateBoardView(){
@@ -44,7 +56,7 @@ function updateBoardView(){
                 numberCell.css("top", getPosTop(i, j) + 50);
                 numberCell.css("left", getPosLeft(i, j) + 50);
             }
-            //如果棋盘格的值不为0的话,设置数字格为高宽为75并设置背景色和前景色及数字值
+            //如果棋盘格的值不为0的话,设置数字格的高宽并设置背景色和前景色及数字值
             else {
                 numberCell.css("width", "100px");
                 numberCell.css("height", "100px");
@@ -54,15 +66,21 @@ function updateBoardView(){
                 numberCell.css("color", getNumberColor(board[i][j]));
                 numberCell.text(board[i][j]);
             }
+            hasConflicted[i][j] = false;
         }
     }
+    $(".number-cell").css("line-height", "100px");
+    $(".number-cell").css("font-size", "60px");
 }
 
 function generateOneNumber(){
+    if (nospace(board)) {
+        return false;
+    }
     //生成一个随机位置的随机数字
     //1 生成一个随机的位置
     var randx = parseInt(Math.floor(Math.random() * 4));
-    var randy =parseInt(Math.floor(Math.random() * 4));
+    var randy = parseInt(Math.floor(Math.random() * 4));
     //定义一个死循环,完成生成随机空格子
     while (true) {
         //如果当前格子的值为0,满足条件
@@ -82,4 +100,5 @@ function generateOneNumber(){
     //实现随机数字显示的动画
     ShowNumberWithAnimation(randx, randy, randNumber);
 
+    return true;
 }
