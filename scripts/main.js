@@ -70,7 +70,7 @@ function updateBoardView(){
         }
     }
     $(".number-cell").css("line-height", "100px");
-    $(".number-cell").css("font-size", "60px");
+    $(".number-cell").css("font-size", "40px");
 }
 
 function generateOneNumber(){
