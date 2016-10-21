@@ -2,6 +2,8 @@
 var board = [];
 var hasConflicted = [];
 var score = 0;
+
+
 $(function(){
     newgame();
 });
@@ -69,7 +71,7 @@ function updateBoardView(){
             hasConflicted[i][j] = false;
         }
     }
-    $(".number-cell").css("font-size", "60px");
+    $(".number-cell").css("line-height", "100px");
     $(".number-cell").css("font-size", "40px");
 }
 

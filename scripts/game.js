@@ -47,7 +47,7 @@ document.addEventListener('touchend',function(event){
 	var dy = endy - starty;
 
 	if(Math.abs(dx) >= Math.abs(dy)){  //在x方向滑动
-		if (da > 0) {
+		if (dx > 0) {
 			if(moveRight()){
 				setTimeout(generateOneNumber, 210);
 				setTimeout(isgameover, 300);
@@ -59,7 +59,7 @@ document.addEventListener('touchend',function(event){
 	        }
 		}
 	}else {   //在y方向滑动
-		if (y >0) {
+		if (dy >0) {
 			if(moveUp()){
 				setTimeout(generateOneNumber, 210);
 				setTimeout(isgameover, 300);
