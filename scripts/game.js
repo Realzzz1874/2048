@@ -1,11 +1,17 @@
 var score = 0;
+
+var startx = 0;
+var starty = 0;
+var endx =0;
+var endy =0;
+
 $(document).keydown(function (event) {
 	switch (event.keyCode) {
 		case 37://left
 			if (moveLeft()) {
 	            setTimeout(generateOneNumber, 210);
 	            setTimeout(isgameover, 300);
-	            }
+	        }
 			break;
 		case 38://up
 			if(moveUp()){
@@ -29,6 +35,44 @@ $(document).keydown(function (event) {
 			break;
 	}
 });
+
+document.addEventListener('touchstart',function(event){
+	startx = event.touches[0].pageX;
+	starty = event.touches[0].pageY;
+});
+document.addEventListener('touchend',function(event){
+	endx = event.changedTouches[0].pageX;
+	endy = event.changedTouches[0].pageY;
+	var dx = endx - startx;
+	var dy = endy - starty;
+
+	if(Math.abs(dx) >= Math.abs(dy)){  //在x方向滑动
+		if (da > 0) {
+			if(moveRight()){
+				setTimeout(generateOneNumber, 210);
+				setTimeout(isgameover, 300);
+			}
+		}else {
+			if (moveLeft()) {
+	            setTimeout(generateOneNumber, 210);
+	            setTimeout(isgameover, 300);
+	        }
+		}
+	}else {   //在y方向滑动
+		if (y >0) {
+			if(moveUp()){
+				setTimeout(generateOneNumber, 210);
+				setTimeout(isgameover, 300);
+			}
+		}else {
+			if(moveDown()){
+				setTimeout(generateOneNumber, 210);
+				setTimeout(isgameover, 300);
+			}
+		}
+	}
+});
+
 
 
 function moveLeft() {
