@@ -9,9 +9,7 @@ $(function(){
 });
 
 function newgame(){
-    //初始化棋盘格和数字格
     init();
-    //生成两个随机位置的随机的数字
     generateOneNumber();
     generateOneNumber();
 }
@@ -79,28 +77,17 @@ function generateOneNumber(){
     if (nospace(board)) {
         return false;
     }
-    //生成一个随机位置的随机数字
-    //1 生成一个随机的位置
     var randx = parseInt(Math.floor(Math.random() * 4));
     var randy = parseInt(Math.floor(Math.random() * 4));
-    //定义一个死循环,完成生成随机空格子
     while (true) {
-        //如果当前格子的值为0,满足条件
         if (board[randx][randy] === 0) {
             break;
         }
-        //否则重新随机一个位置
         randx = parseInt(Math.floor(Math.random() * 4));
         randy = parseInt(Math.floor(Math.random() * 4));
     }
-    //2 生成一个随机的数字(2048游戏规则,新生成的数字只可以是2或4)
     var randNumber = Math.random() < 0.5 ? 2 : 4;
-
-    //3 在随机的位置上显示出随机的数字
-    //在随机位置显示随机数字
     board[randx][randy] = randNumber;
-    //实现随机数字显示的动画
     ShowNumberWithAnimation(randx, randy, randNumber);
-
     return true;
 }

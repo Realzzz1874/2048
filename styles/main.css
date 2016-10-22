@@ -42,7 +42,6 @@ header p {
     background-color: #bbada0;
     border-radius: 10px;
     position: relative;
-	/*background-image: url();*/
 }
 .grid-cell {
     width: 100px;
@@ -85,25 +84,4 @@ header p {
     font-size: 50px;
     color: white;
     margin: 20px auto;
-}
-
-#restartgamebutton {
-    display: block;
-    margin: 20px auto;
-
-    width: 180px;
-    padding: 10px 10px;
-    background-color: #8f7a66;
-
-    font-family: Arial;
-    font-size: 30px;
-    color: white;
-
-    border-radius: 10px;
-
-    text-decoration: none;
-}
-
-#restartgamebutton:hover {
-    background-color: #9f8b77;
 }
