@@ -60,28 +60,4 @@ header p {
     position: absolute;
 }
 
-.gameover {
-    display: block;
-    margin: 0 auto;
-    width: 500px;
-    text-align: center;
-    vertical-align: middle;
 
-    position: absolute;
-}
-
-.gameover p {
-    font-family: Arial;
-    font-size: 50px;
-    color: white;
-    margin: 20px auto;
-
-    margin-top: 150px;
-}
-
-.gameover span {
-    font-family: Arial;
-    font-size: 50px;
-    color: white;
-    margin: 20px auto;
-}
