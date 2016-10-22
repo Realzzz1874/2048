@@ -59,7 +59,7 @@ document.addEventListener('touchend',function(event){
 	        }
 		}
 	}else {   //在y方向滑动
-		if (dy >0) {
+		if (dy <0) {
 			if(moveUp()){
 				setTimeout(generateOneNumber, 210);
 				setTimeout(isgameover, 300);
